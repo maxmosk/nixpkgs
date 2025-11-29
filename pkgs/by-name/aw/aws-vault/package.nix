@@ -5,28 +5,28 @@
   lib,
   makeWrapper,
   stdenv,
+  writableTmpDirAsHomeHook,
   xdg-utils,
 }:
 buildGoModule rec {
   pname = "aws-vault";
-  version = "7.7.5";
+  version = "7.7.12";
 
   src = fetchFromGitHub {
     owner = "ByteNess";
     repo = "aws-vault";
     rev = "v${version}";
-    hash = "sha256-K91GNyvtjDO6UMU9cC+TbUdMWdXrPlKLU8u5cbEMdRA=";
+    hash = "sha256-W/rEce6utwpDToW7amDM4JyiGUt8WcITemReEXLOd+E=";
   };
 
   proxyVendor = true;
-  vendorHash = "sha256-3AL3vjKqzjrzgPrLLwIgWpn1hRB6soTMbaRly/fvziA=";
+  vendorHash = "sha256-4B6dGokRObOkV1r1pw8lR+zFEZPZhMLj+Fj48bRkME4=";
 
   nativeBuildInputs = [
     installShellFiles
     makeWrapper
+    writableTmpDirAsHomeHook
   ];
-
-  env.CGO_ENABLED = "0";
 
   postInstall = ''
     # make xdg-open overrideable at runtime

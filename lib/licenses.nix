@@ -747,6 +747,11 @@ lib.mapAttrs mkLicense (
       fullName = "Historical Permission Notice and Disclaimer - University of California variant";
     };
 
+    hyphenBulgarian = {
+      fullName = "hyphen-bulgarian License";
+      spdxId = "hyphen-bulgarian";
+    };
+
     # Intel's license, seems free
     iasl = {
       spdxId = "Intel-ACPI";
@@ -1513,6 +1518,11 @@ lib.mapAttrs mkLicense (
     x11 = {
       spdxId = "X11";
       fullName = "X11 License";
+    };
+
+    x11NoPermitPersons = {
+      spdxId = "X11-no-permit-persons";
+      fullName = "X11 no permit persons clause";
     };
 
     xerox = {

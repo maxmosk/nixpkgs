@@ -13,6 +13,7 @@
   zstd,
   installShellFiles,
   nixosTests,
+  nix-update-script,
 }:
 
 let
@@ -143,6 +144,14 @@ python.pkgs.buildPythonApplication rec {
 
   disabled = python.pythonOlder "3.9";
 
+  passthru.updateScript = nix-update-script {
+    # Only match tags formatted as x.y.z (e.g., 1.2.3)
+    extraArgs = [
+      "--version-regex"
+      "^([0-9]+\\.[0-9]+\\.[0-9]+)$"
+    ];
+  };
+
   meta = with lib; {
     changelog = "https://github.com/borgbackup/borg/blob/${src.rev}/docs/changes.rst";
     description = "Deduplicating archiver with compression and encryption";
@@ -153,7 +162,6 @@ python.pkgs.buildPythonApplication rec {
     maintainers = with maintainers; [
       dotlambda
       globin
-      iedame
     ];
   };
 }

@@ -14233,10 +14233,10 @@ with self;
 
   FinanceQuote = buildPerlPackage rec {
     pname = "Finance-Quote";
-    version = "1.66";
+    version = "1.67";
     src = fetchurl {
       url = "mirror://cpan/authors/id/B/BP/BPSCHUCK/Finance-Quote-${version}.tar.gz";
-      hash = "sha256-GOkdcI+Ah6JvvL+zsKYe0UcdKks855jecwTzBIGkZ+k=";
+      hash = "sha256-uqip/AS5o4+nh77gAWvNTMMwHMmi8KbDeBGaNdre6zA=";
     };
     buildInputs = [
       DateManip
@@ -17445,6 +17445,8 @@ with self;
       mainProgram = "streamzip";
     };
   };
+
+  IOCompressBrotli = callPackage ../development/perl-modules/IOCompressBrotli { };
 
   IODigest = buildPerlPackage {
     pname = "IO-Digest";
@@ -38201,6 +38203,10 @@ with self;
       substituteInPlace ext/dnd/XS/DataObject.xs \
         --replace "#ifdef __WXGTK20__" "#if wxUSE_GUI"
     '';
+    # Build system attempts to compile c++ files with clang.
+    preConfigure = ''
+      export CC=$CXX
+    '';
     propagatedBuildInputs = [ AlienWxWidgets ];
     # Testing requires an X server:
     #   Error: Unable to initialize GTK, is DISPLAY set properly?"
@@ -38226,6 +38232,10 @@ with self;
       pkgs.libGLU
       Wx
     ];
+    # Build system attempts to compile c++ files with clang.
+    preConfigure = ''
+      export CC=$CXX
+    '';
     doCheck = false;
     meta = {
       description = "wxPerl demo helper for Wx::GLCanvas";

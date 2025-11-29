@@ -4,23 +4,20 @@
   fetchFromGitHub,
   garth,
   pdm-backend,
-  pythonOlder,
   requests,
   withings-sync,
 }:
 
 buildPythonPackage rec {
   pname = "garminconnect";
-  version = "0.2.31";
+  version = "0.2.34";
   pyproject = true;
-
-  disabled = pythonOlder "3.10";
 
   src = fetchFromGitHub {
     owner = "cyberjunky";
     repo = "python-garminconnect";
     tag = version;
-    hash = "sha256-yK4p1zb3OLTpDrtVz0bA/jlhDV3AFpltN3CTDBcSTPU=";
+    hash = "sha256-gcqkSWyPSwkzykKSXhTPq363fi89TyP2DPQchSmGg/k=";
   };
 
   pythonRelaxDeps = [
