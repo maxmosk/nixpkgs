@@ -94,6 +94,17 @@
         cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2711-rpi-400.dtb firmware/
         cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2711-rpi-cm4.dtb firmware/
         cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2711-rpi-cm4s.dtb firmware/
+
+        # Add pi5 specific files
+        cp ${pkgs.ubootRaspberryPi5}/u-boot.bin firmware/u-boot-rpi5.bin
+        cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2712-rpi-5-b.dtb firmware/
+        cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2712-d-rpi-5-b.dtb firmware/
+        cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2712d0-rpi-5-b.dtb firmware/
+        cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2712-rpi-500.dtb firmware/
+        cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2712-rpi-cm5-cm4io.dtb firmware/
+        cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2712-rpi-cm5-cm5io.dtb firmware/
+        cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2712-rpi-cm5l-cm4io.dtb firmware/
+        cp ${pkgs.raspberrypifw}/share/raspberrypi/boot/bcm2712-rpi-cm5l-cm5io.dtb firmware/
       '';
     populateRootCommands = ''
       mkdir -p ./files/boot
